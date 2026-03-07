@@ -1,0 +1,295 @@
+
+/* =========================================================
+   VARIABLES GENERALES DE COLOR
+========================================================= */
+:root{
+  --azul-css: #005696;
+  --azul-oscuro: #003d6b;
+  --azul-claro: #eef6fc;
+  --blanco: #ffffff;
+  --gris-suave: #f4f4f4;
+  --rojo-cancelar: #d32f2f;
+  --verde-confirmar: #2e7d32;
+}
+/* =========================================================
+   ESTILO GENERAL PARA TODOS LOS ELEMENTOS
+========================================================= */
+*{
+  box-sizing: border-box;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/* =========================================================
+   CUERPO DE LA PÁGINA
+========================================================= */
+body{
+  margin: 0;
+  background: var(--azul-claro);
+  color: #111;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================================
+   HEADER
+   Encabezado principal de la aplicación.
+========================================================= */
+.encabezado{
+  background: var(--blanco);
+  border-bottom: 3px solid var(--azul-css);
+  padding: 22px;
+  text-align: center;
+  position: relative;/* Para posicionar el logo de forma absoluta */
+}
+
+/* =========================================================
+   LOGO CCSS
+========================================================= */
+.logo-ccss{
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45px;
+  height: auto;
+}
+
+/* =========================================================
+   CONTENEDOR DEL TÍTULO
+========================================================= */
+.titulo-header{
+  text-align: center;
+}
+
+/* =========================================================
+   TÍTULO PRINCIPAL DEL HEADER
+========================================================= */
+.encabezado h1{
+  margin: 0 0 6px 0;
+  font-size: 38px;
+  letter-spacing: 0.5px;
+}
+
+/* =========================================================
+   SUBTÍTULO DEL HEADER
+========================================================= */
+.encabezado p{
+  margin: 0;
+  opacity: 0.85;
+}
+
+/* =========================================================
+   CONTENEDOR PRINCIPAL
+   Define el ancho máximo del contenido y lo centra.
+========================================================= */
+.contenedor{
+  width: min(720px, 92%);
+  margin: 30px auto;
+  flex: 1;
+}
+
+/* =========================================================
+   VISTAS
+   Cada vista del sistema (inicio, login, registro, perfil)
+========================================================= */
+.vista{
+  background: var(--blanco);
+  border: 2px solid var(--azul-oscuro);
+  border-radius: 16px;
+  padding: 32px;
+  margin-bottom: 18px;
+  text-align: center;
+
+}
+
+/* =========================================================
+   LÍNEA DECORATIVA
+   Agrega una línea azul arriba del contenido
+   de cada vista.
+========================================================= */
+.vista::before{
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--azul-css);
+  margin: 0 auto 18px;
+  border-radius: 4px;
+}
+
+/* =========================================================
+   CLASE OCULTO
+   Se utiliza para esconder vistas o mensajes con display:none.
+========================================================= */
+.oculto{ display: none; }
+
+/* =========================================================
+   TARJETA INTERNA
+   Caja interna para formularios/contenido de perfil.
+========================================================= */
+.tarjeta{
+  margin: 18px auto 0 auto;
+  max-width: 600px;
+  background: var(--gris-suave);
+  border: 1px solid #cfcfcf;
+  border-radius: 14px;
+  padding: 20px;
+  text-align: left;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+}
+
+/* =========================================================
+   TÍTULOS DENTRO DE LAS VISTAS
+========================================================= */
+.vista h2{
+  margin-top: 0;
+  font-size: 28px;
+  text-align: center;
+}
+
+/* =========================================================
+   TEXTO DE AYUDA:Texto secundario que aparece en formularios.
+========================================================= */
+.texto-ayuda{
+  text-align: center;
+  margin-bottom: 18px;
+  opacity: 0.85;
+}
+
+/* =========================================================
+   LABELS:Estilo para los nombres de los campos del formulario.
+========================================================= */
+label{
+  display: block;
+  margin: 14px 0 6px;
+  font-weight: 700;
+}
+
+/* ===============================================================
+   INPUTS Estilo general para campos de texto, contraseña y correo.
+================================================================= */
+input[type="text"],
+input[type="password"],
+input[type="email"]
+{
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  font-size: 15px;
+}
+
+/* =========================================================
+   CONTENEDOR DE ACCIONES:Es para organizar botones de inicio.
+========================================================= */
+.acciones{
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 22px;
+}
+
+/* =========================================================
+   BOTÓN GENERAL:Estilo base para todos los botones del sistema.
+========================================================= */
+.btn{
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+  cursor: pointer;
+  font-weight: 800;
+  margin-top: 14px;
+  transition: 0.2s ease;
+  font-size: 15px;
+}
+
+/* =====================================================================
+   BOTÓN PRINCIPAL:Es para acciones principales como entrar../.
+======================================================================*/
+.btn-principal{
+  background: var(--azul-css);
+  color: var(--blanco);
+}
+
+/* ==========================================================
+Cambio de color al pasar el mouse 
+===========================================================*/
+.btn-principal:hover{
+  background: var(--azul-oscuro);
+}
+
+/* =========================================================
+   BOTÓN SECUNDARIO
+   Se utiliza en acciones como volver.
+========================================================= */
+.btn-secundario{
+  background: var(--gris-suave);
+  color: #111;
+  border: 1px solid #545454;
+}
+
+/* =========================================================
+Efecto hover del botón secundario 
+======================================================= */
+.btn-secundario:hover{
+  opacity: 0.9;
+  background: #d6d3d3;
+}
+
+/* =========================================================
+   BOTÓN CANCELAR
+   Se utliza para cerrar sesión.
+======================================================= */
+.btn-cancelar{
+  background: var(--rojo-cancelar);
+  color: var(--blanco);
+}
+
+/* =========================================================
+Efecto hover del botón cancelar 
+======================================================= */
+.btn-cancelar:hover{
+  opacity: 0.9;
+}
+
+/* =========================================================
+   MENSAJES: Estilo principal para mensajes de error o éxito.
+========================================================= */
+.mensaje{
+  display: block;
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: 800;
+}
+
+/* =========================================================
+   MENSAJE DE ERROR
+========================================================= */
+.mensaje.error{
+  background: #ffe5e5;
+  color: var(--rojo-cancelar);
+  border: 1px solid var(--rojo-cancelar);
+}
+
+/* =========================================================
+   MENSAJE DE ÉXITO
+========================================================= */
+.mensaje.ok{
+  background: #e6f6ea;
+  color: var(--verde-confirmar);
+  border: 1px solid var(--verde-confirmar);
+}
+
+/* =========================================================
+   FOOTER
+   Pie de página centrado 
+========================================================= */
+.pie{
+  padding: 18px;
+  text-align: center;
+  color: #333;
+}

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Título que aparece en la pestaña del navegador -->
+  <title>Módulo Usuarios - Login / Registro / Perfil</title>
+
+  <link rel="stylesheet" href="./css(Pantallas-usuarios)/styles.css" />
+  <script src="./js(Pantallas-usuarios)/usuarios.js"></script>
+</head>
+
+<body>
+
+   <!-- =====================================================
+       HEADER
+       Encabezado principal de la app
+       Contiene el logo institucional y el título del sistema.
+  ====================================================== -->
+  <header class="encabezado">
+
+    <img src="./img/ccss.png" alt="Logo CCSS" class="logo-ccss" />
+    <div class="titulo-header">
+      <h1>Sistema de Citas Médicas</h1>
+      <p id="subtitulo">Iniciá sesión o registrate para continuar.</p>
+    </div>
+  </header>
+
+
+  <!-- =====================================================
+       CONTENEDOR PRINCIPAL
+       Aquí se encuentran todas las vistas del sistema.
+        Solo una vista se muestra a la vez, las demás están ocultas.
+  ====================================================== -->
+  <main class="contenedor">
+
+    <!-- =====================================================
+     VISTA SELECCIÓN DE ROL
+     Primera pantalla del sistema.
+     Permite elegir si entra un paciente o personal médico.
+====================================================== -->
+    <section id="vista-rol" class="vista">
+
+      <h2>Bienvenido al sistema</h2>
+      <p>Seleccione el tipo de acceso.</p>
+
+      <div class="acciones">
+
+        <!-- Acceso al módulo de pacientes -->
+        <button id="btnPaciente" class="btn btn-principal">
+          Paciente
+        </button>
+
+        <!-- Acceso al módulo de personal médico -->
+        <button id="btnMedico" class="btn btn-secundario">
+          Personal médico
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- =====================================================
+         VISTA INICIO
+         Pantalla principal del sistema.
+         Puede elegir entre iniciar sesión o registrarse.
+    ====================================================== -->
+    <section id="vista-inicio" class="vista oculto">
+
+      <h2>Acceso al sistema</h2>
+      <p>Seleccione una opción para continuar.</p>
+
+      <div class="acciones">
+        <button id="btnIrLogin" class="btn btn-principal">Iniciar sesión</button>
+        <button id="btnIrRegistro" class="btn btn-secundario">Crear cuenta</button>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         VISTA LOGIN
+         Formulario para iniciar sesión en el sistema.
+    ====================================================== -->
+    <section id="vista-login" class="vista oculto">
+      <form id="formLogin" class="tarjeta">
+        <h2>Inicio de sesión</h2>
+        <p>Ingresá tu correo electrónico y contraseña para acceder al sistema.</p>
+
+        <label for="correoLogin">Correo electrónico</label>
+        <input type="text" id="correoLogin" placeholder="correo@ejemplo.com" />
+
+        <label for="claveLogin">Contraseña</label>
+        <input type="password" id="claveLogin" placeholder="Mínimo 6 caracteres" />
+
+        <!-- Mensaje dinámico para mostrar errores o información al usuario -->
+        <span id="msgLogin" class="mensaje oculto"></span>
+
+        <input type="submit" class="btn btn-principal" value="Entrar" />
+        <button type="button" id="btnVolverInicio1" class="btn btn-secundario">Volver</button>
+      </form>
+    </section>
+
+    <!-- =====================================================
+         VISTA REGISTRO
+         Formulario para crear una nueva cuenta de usuario.
+    ====================================================== -->
+    <section id="vista-registro" class="vista oculto">
+      <form id="formRegistro" class="tarjeta">
+        <h2>Registro del usuario</h2>
+        <p class="texto-ayuda">Completá los campos para crear tu cuenta.</p>
+
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" placeholder="Nombre" />
+
+        <label for="apellidos">Apellidos</label>
+        <input type="text" id="apellidos" placeholder="Apellidos" />
+
+        <label for="correo">Correo electrónico</label>
+        <input type="text" id="correo" placeholder="correo@ejemplo.com" />
+
+        <label for="clave">Contraseña</label>
+        <input type="password" id="clave" placeholder="Mínimo 6 caracteres" />
+
+        <label for="confirmarClave">Confirmar contraseña</label>
+        <input type="password" id="confirmarClave" placeholder="Repita la contraseña" />
+
+        <!-- Mensaje dinámico de validación -->
+        <span id="msgRegistro" class="mensaje oculto"></span>
+
+        <input type="submit" class="btn btn-principal" value="Crear cuenta" />
+        <button type="button" id="btnVolverInicio2" class="btn btn-secundario">Volver</button>
+      </form>
+    </section>
+    <!-- =====================================================
+         VISTA PERFIL
+         Muestra la información del usuario una vez que
+          ha iniciado sesión correctamente.
+    ====================================================== -->
+    <section id="vista-perfil" class="vista oculto">
+
+      <!-- Tarjeta que contiene los datos del usuario -->
+      <div class="tarjeta">
+        <h2>Mi perfil</h2>
+        <p class="texto-ayuda">Bienvenido a tu perfil. Aquí puedes ver tu información registrada.</p>
+
+        <!-- Datos del usuario cargados dinámicamente con JavaScript -->
+        <p><strong>Nombre:</strong> <span id="perfilNombre">-</span></p>
+        <p><strong>Apellidos:</strong> <span id="perfilApellidos">-</span></p>
+        <p><strong>Correo electrónico:</strong> <span id="perfilCorreo">-</span></p>
+
+        <!-- =====================================================
+         ACCIONES DEL USUARIO
+         Aquí irán los accesos a las otras pantallas del sistema
+         como gestión de citas, historial médico, etc.
+    ====================================================== -->
+        <div class="acciones">
+          <button class="btn btn-principal">Gestionar citas</button>
+          <button class="btn btn-principal">Historial médico</button>
+        </div>
+
+        <!-- Mensaje opcional para mostrar información adicional -->
+        <span id="msgPerfil" class="mensaje oculto"></span>
+
+        <button id="btnCerrarSesion" class="btn btn-cancelar">Cerrar sesión</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================
+       FOOTER
+       Pie de página de la aplicación.Tiene un mensaje extra
+  ====================================================== -->
+  <footer class="pie">
+    <small>Atención médica digital segura y confiable</small>
+  </footer>
+</body>
+
+</html>
