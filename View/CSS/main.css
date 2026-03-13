@@ -1,0 +1,68 @@
+/* =========================================================
+   PANEL DE MÓDULOS
+========================================================= */
+.panel-modulos {
+
+  margin-top: 25px;
+
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+  gap: 20px;
+
+}
+
+
+/* =========================================================
+   TARJETA DE MÓDULO
+========================================================= */
+.card-modulo {
+
+  background: white;
+
+  border: 1px solid var(--gris-borde);
+
+  border-radius: 16px;
+
+  padding: 22px;
+
+  text-align: center;
+
+  box-shadow: var(--sombra-suave);
+
+  transition: all .2s ease;
+
+}
+
+.card-modulo:hover {
+
+  transform: translateY(-3px);
+
+  box-shadow: var(--sombra-media);
+
+}
+
+
+/* =========================================================
+   TÍTULO DEL MÓDULO
+========================================================= */
+.card-modulo h3 {
+
+  margin-top: 0;
+
+  color: var(--azul-css);
+
+}
+
+
+/* =========================================================
+   DESCRIPCIÓN DEL MÓDULO
+========================================================= */
+.card-modulo p {
+
+  opacity: 0.8;
+
+  font-size: 14px;
+
+}
