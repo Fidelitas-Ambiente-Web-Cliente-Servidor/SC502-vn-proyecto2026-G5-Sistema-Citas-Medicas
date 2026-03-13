@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Diagnósticos e Historial Médico</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./View/CSS/usuarios.css">
+    <link rel="stylesheet" href="./View/CSS/diagnosticos.css">
+
+    <script defer src="./Controller/JavaScript/diagnosticos.js"></script>
+
+</head>
+
+<body>
+
+    <header class="encabezado">
+
+        <img src="./View/Img/ccss.png" alt="Logo CCSS" class="logo-ccss">
+
+        <div class="titulo-header">
+            <h1>Diagnósticos e Historial Médico</h1>
+            <p>Registro clínico y seguimiento del paciente</p>
+        </div>
+
+        <a href="usuarios.html" class="btn btn-principal btn-volver">Volver al inicio</a>
+
+    </header>
+
+
+    <main class="contenedor">
+
+        <!-- PANEL DE NOTIFICACIONES -->
+
+        <section class="vista">
+
+            <h2>Notificaciones del sistema</h2>
+
+            <div id="panelNotificaciones" class="panel-notificaciones">
+
+                <p class="sin-notificaciones">No hay notificaciones</p>
+
+            </div>
+
+        </section>
+
+
+        <!-- REGISTRO DE DIAGNÓSTICO -->
+
+        <section class="vista">
+
+            <h2>Registrar diagnóstico</h2>
+
+            <form id="formDiagnostico" class="tarjeta">
+
+                <label>Síntomas</label>
+                <input type="text" id="sintomas" placeholder="Ej: dolor de cabeza, fiebre">
+
+                <label>Diagnóstico</label>
+                <input type="text" id="diagnostico" placeholder="Ej: gripe">
+
+                <label>Tratamiento</label>
+                <input type="text" id="tratamiento" placeholder="Medicamentos o recomendaciones">
+
+                <label>Notas médicas</label>
+                <input type="text" id="notas" placeholder="Observaciones adicionales">
+
+                <span id="mensajeDiag" class="mensaje oculto"></span>
+
+                <button type="submit" class="btn btn-principal">
+                    Guardar diagnóstico
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- HISTORIAL MÉDICO -->
+
+        <section class="vista">
+
+            <h2>Historial médico</h2>
+
+            <input type="text" id="buscadorHistorial" placeholder="Buscar por diagnóstico o fecha">
+
+            <div id="historialMedico"></div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+/* =========================================================
+   LISTA DE CITAS
+========================================================= */
+#listaCitas {
+
+  margin-top: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+}
+
+
+/* =========================================================
+   TARJETA DE CITA
+========================================================= */
+.cita-card {
+
+  background: var(--blanco);
+
+  border: 2px solid var(--azul-css);
+
+  border-radius: 12px;
+
+  padding: 16px 18px;
+
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+
+  transition: transform 0.2s ease,
+              box-shadow 0.2s ease;
+
+}
+
+
+/* efecto hover */
+
+.cita-card:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+
+}
+
+
+/* =========================================================
+   PRIORIDADES DE CITA
+========================================================= */
+.prioridad-alta {
+
+  color: #e63946;
+  font-weight: 600;
+
+}
+
+.prioridad-media {
+
+  color: #f4a261;
+  font-weight: 600;
+
+}
+
+.prioridad-baja {
+
+  color: #2a9d8f;
+  font-weight: 600;
+
+}
+
+
+/* =========================================================
+   ACCIONES DE CITA
+========================================================= */
+.cita-acciones {
+
+  margin-top: 12px;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+}

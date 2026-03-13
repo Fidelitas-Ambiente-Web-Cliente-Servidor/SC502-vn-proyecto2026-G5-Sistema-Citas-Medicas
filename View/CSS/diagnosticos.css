@@ -1,0 +1,114 @@
+/* =========================================================
+   HISTORIAL MÉDICO
+========================================================= */
+#historialMedico {
+
+  margin-top: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+}
+
+
+/* =========================================================
+   TARJETA DE HISTORIAL
+========================================================= */
+.historial-card {
+
+  background: white;
+
+  border-left: 4px solid var(--azul-css);
+
+  border-radius: 12px;
+
+  padding: 18px;
+
+  box-shadow: var(--sombra-suave);
+
+  transition: .2s ease;
+
+}
+
+.historial-card:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow: var(--sombra-media);
+
+}
+
+
+/* =========================================================
+   FECHA DEL HISTORIAL
+========================================================= */
+.historial-fecha {
+
+  font-weight: bold;
+
+  color: var(--azul-css);
+
+  margin-bottom: 8px;
+
+}
+
+
+/* =========================================================
+   PANEL DE NOTIFICACIONES
+========================================================= */
+.panel-notificaciones {
+
+  background: var(--blanco);
+
+  border: 2px solid var(--azul-oscuro);
+
+  border-radius: 12px;
+
+  padding: 16px;
+
+  max-height: 200px;
+
+  overflow-y: auto;
+
+}
+
+
+/* =========================================================
+   NOTIFICACIÓN INDIVIDUAL
+========================================================= */
+.notificacion {
+
+  background: var(--azul-claro);
+
+  padding: 10px 12px;
+
+  border-left: 4px solid var(--azul-css);
+
+  border-radius: 6px;
+
+  font-size: 14px;
+
+  margin-bottom: 8px;
+
+}
+
+
+/* =========================================================
+   TEXTO CUANDO NO HAY NOTIFICACIONES
+========================================================= */
+.sin-notificaciones {
+
+  opacity: 0.6;
+
+  text-align: center;
+
+}
+
+/* =========================================================
+   BOTON DE VOLVER AL INICIO
+========================================================= */
+.btn-volver {
+  float: right;
+  margin: 10px 20px 0 0;
+}
