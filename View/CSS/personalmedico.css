@@ -64,3 +64,10 @@
     white-space: nowrap; /* Evita que el texto se parta en dos líneas */
     font-weight: 600;
 }
+
+/* Botón de volver al inicio 
+
+.btn-volver {
+  float: right;
+  margin: 10px 20px 0 0;
+}
