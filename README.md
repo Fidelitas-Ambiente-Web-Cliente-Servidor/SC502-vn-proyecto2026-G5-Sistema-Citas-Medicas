@@ -96,7 +96,7 @@ docker compose ps
 ## Estructura del proyecto (patrón MVC)
 
 ```
-G5-AmbienteWeb-SV/
+SC502-vn-proyecto2026-G5-Sistema-Citas-Medicas/
 ├── app/                                # Código de la aplicación (MVC)
 │   ├── controllers/                    # Capa Controlador — recibe solicitudes y coordina
 │   │   ├── UserController.php          # Login, registro, logout, perfil de usuario
