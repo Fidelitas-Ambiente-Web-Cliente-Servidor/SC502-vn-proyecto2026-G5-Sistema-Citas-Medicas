@@ -1,0 +1,877 @@
+/* =========================================================
+   VARIABLES GLOBALES
+========================================================= */
+:root {
+  --azul-css: #005696;
+  --azul-oscuro: #003d6b;
+  --azul-claro: #eef6fc;
+
+  --blanco: #ffffff;
+  --gris-suave: #f6f8fb;
+  --gris-borde: #e1e5ea;
+
+  --rojo-cancelar: #e63946;
+  --verde-confirmar: #2a9d8f;
+
+  --sombra-suave: 0 4px 12px rgba(0,0,0,0.08);
+  --sombra-media: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+* {
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+/* =========================================================
+   BODY
+========================================================= */
+body {
+  margin: 0;
+  background: var(--azul-claro);
+  color: #111;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+.encabezado {
+  background: var(--blanco);
+  border-bottom: 3px solid var(--azul-css);
+  padding: 16px 24px;
+  box-shadow: var(--sombra-suave);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 80px;
+  position: relative;
+}
+
+.logo-ccss {
+  width: 48px;
+  flex-shrink: 0;
+}
+
+.titulo-header {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.titulo-header h1 {
+  margin: 0 0 4px 0;
+  font-size: 28px;
+  color: var(--azul-oscuro);
+}
+
+.titulo-header p {
+  margin: 0;
+  opacity: 0.75;
+  font-size: 14px;
+}
+
+/* Login / Registro: h1 y p directos en el header */
+.encabezado > h1 {
+  flex: 1;
+  margin: 0 0 4px 0;
+  font-size: 28px;
+  text-align: center;
+  color: var(--azul-oscuro);
+}
+
+.encabezado > p {
+  font-size: 14px;
+  opacity: 0.75;
+  margin: 0;
+}
+
+/* =========================================================
+   HEADER USUARIO (info + botones esquina derecha)
+========================================================= */
+.header-usuario {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.header-usuario span {
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   CONTENEDOR
+========================================================= */
+.contenedor {
+  width: min(900px, 92%);
+  margin: 30px auto;
+  flex: 1;
+}
+
+/* =========================================================
+   VISTAS
+========================================================= */
+.vista {
+  background: var(--blanco);
+  border: 1px solid var(--gris-borde);
+  border-radius: 16px;
+  padding: 32px;
+  margin-bottom: 20px;
+  text-align: center;
+  box-shadow: var(--sombra-suave);
+}
+
+.vista::before {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--azul-css);
+  margin: 0 auto 18px;
+  border-radius: 4px;
+}
+
+.oculto {
+  display: none !important;
+}
+
+/* =========================================================
+   TARJETAS
+========================================================= */
+.tarjeta {
+  margin: 18px auto 0 auto;
+  max-width: 600px;
+  background: var(--gris-suave);
+  border: 1px solid #cfcfcf;
+  border-radius: 14px;
+  padding: 22px;
+  text-align: left;
+  box-shadow: var(--sombra-suave);
+}
+
+/* =========================================================
+   TEXTO
+========================================================= */
+.texto-ayuda {
+  text-align: center;
+  margin-bottom: 18px;
+  opacity: 0.85;
+}
+
+/* =========================================================
+   FORMULARIOS
+========================================================= */
+label {
+  display: block;
+  margin: 14px 0 6px;
+  font-weight: 700;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--gris-borde);
+  font-size: 14px;
+  font-family: inherit;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--azul-css);
+  box-shadow: 0 0 0 2px rgba(0,86,150,0.15);
+}
+
+/* Los botones tipo submit no deben heredar width:100% */
+input[type="submit"],
+input[type="button"],
+input[type="reset"] {
+  width: auto;
+  cursor: pointer;
+}
+
+/* =========================================================
+   BOTONES
+========================================================= */
+.btn {
+  display: inline-block;
+  border: none;
+  border-radius: 10px;
+  padding: 11px 18px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+  transition: background .2s, transform .15s, box-shadow .15s;
+  text-decoration: none;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.btn-principal {
+  background: var(--azul-css);
+  color: white;
+}
+
+.btn-principal:hover {
+  background: var(--azul-oscuro);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0,86,150,0.25);
+}
+
+.btn-secundario {
+  background: var(--gris-suave);
+  border: 1px solid #545454;
+  color: #333;
+}
+
+.btn-secundario:hover {
+  background: #e2e6ea;
+}
+
+.btn-cancelar {
+  background: var(--rojo-cancelar);
+  color: white;
+}
+
+.btn-cancelar:hover {
+  background: #c0303b;
+  transform: translateY(-1px);
+}
+
+.btn-sm {
+  padding: 7px 12px;
+  font-size: 13px;
+}
+
+/* =========================================================
+   ACCIONES
+========================================================= */
+.acciones {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 22px;
+}
+
+/* =========================================================
+   MENSAJES
+========================================================= */
+.mensaje {
+  display: block;
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.mensaje.error,
+.error {
+  background: #ffe5e5;
+  color: var(--rojo-cancelar);
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+.mensaje.ok,
+.ok {
+  background: #e6f6ea;
+  color: var(--verde-confirmar);
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+/* =========================================================
+   MAIN — MÓDULOS
+========================================================= */
+.panel-modulos {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card-modulo {
+  display: block;
+  background: white;
+  border: 2px solid var(--gris-borde);
+  border-radius: 16px;
+  padding: 28px 22px;
+  text-align: center;
+  box-shadow: var(--sombra-suave);
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+  text-decoration: none;
+  color: inherit;
+}
+
+.card-modulo h3 {
+  margin: 0 0 8px 0;
+  color: var(--azul-css);
+  font-size: 18px;
+}
+
+.card-modulo p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.75;
+}
+
+.card-modulo:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra-media);
+  border-color: var(--azul-css);
+}
+
+/* =========================================================
+   CITAS
+========================================================= */
+.lista-citas {
+  display: grid;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.cita-card {
+  background: var(--blanco);
+  border: 1px solid var(--gris-borde);
+  border-left: 5px solid var(--azul-css);
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: var(--sombra-suave);
+  text-align: left;
+}
+
+.cita-header {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.cita-acciones {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.filtro-citas {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.filtro-citas select {
+  max-width: 220px;
+  flex: 1;
+}
+
+/* =========================================================
+   PERSONAL MÉDICO
+========================================================= */
+.grid-agenda {
+  display: grid;
+  gap: 20px;
+}
+
+.filtros-agenda {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.campo-filtro {
+  flex: 1;
+  min-width: 150px;
+}
+
+.campo-filtro label {
+  margin: 0 0 6px;
+}
+
+.tarjeta.cita-medica {
+  text-align: left;
+  border-left: 5px solid var(--azul-css);
+}
+
+.sim-campos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+.sim-campos label {
+  margin: 0 0 4px;
+}
+
+/* =========================================================
+   DIAGNÓSTICOS / HISTORIAL
+========================================================= */
+.historial-lista {
+  display: grid;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.historial-card {
+  background: var(--blanco);
+  border: 1px solid var(--gris-borde);
+  border-left: 5px solid var(--azul-css);
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: var(--sombra-suave);
+  text-align: left;
+}
+
+.historial-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.historial-fecha {
+  font-weight: 700;
+  color: var(--azul-css);
+  font-size: 13px;
+}
+
+.historial-paciente {
+  font-size: 13px;
+  color: #555;
+}
+
+.historial-notas {
+  color: #666;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.btn-eliminar-historial {
+  margin-left: auto;
+  background: transparent;
+  border: 1px solid var(--rojo-cancelar);
+  color: var(--rojo-cancelar);
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 4px 10px;
+  font-size: 12px;
+  transition: background .2s, color .2s;
+}
+
+.btn-eliminar-historial:hover {
+  background: var(--rojo-cancelar);
+  color: white;
+}
+
+.historial-filtros {
+  text-align: left;
+}
+
+.historial-filtros input[type="text"] {
+  margin-bottom: 0;
+}
+
+.historial-filtros-fila {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.historial-filtros-fila input[type="date"] {
+  width: auto;
+  flex: 1;
+  min-width: 140px;
+  max-width: 180px;
+}
+
+/* =========================================================
+   CAMPANA DE NOTIFICACIONES
+========================================================= */
+.btn-campana {
+  position: relative;
+  background: var(--azul-claro);
+  border: 1px solid var(--gris-borde);
+  border-radius: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background .2s;
+}
+
+.btn-campana:hover {
+  background: #d0e8f8;
+}
+
+.campana-activa {
+  animation: shake .4s ease;
+}
+
+@keyframes shake {
+  0%,100% { transform: rotate(0deg); }
+  25%      { transform: rotate(-10deg); }
+  75%      { transform: rotate(10deg); }
+}
+
+.badge-notif {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: var(--rojo-cancelar);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================================================
+   BADGES DE PRIORIDAD
+========================================================= */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.badge-prioridad.badge-alta {
+  background: #ffe0e0;
+  color: #c0392b;
+  border: 1px solid #e74c3c;
+}
+
+.badge-prioridad.badge-media {
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffc107;
+}
+
+.badge-prioridad.badge-baja {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #28a745;
+}
+
+/* =========================================================
+   BADGES DE ESTADO
+========================================================= */
+.badge-estado.badge-estado-activa {
+  background: #cce5ff;
+  color: #004085;
+  border: 1px solid #66b2ff;
+}
+
+.badge-estado.badge-estado-cancelada {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.badge-estado.badge-estado-reprogramada {
+  background: #e2d9f3;
+  color: #4a235a;
+  border: 1px solid #9b59b6;
+}
+
+.badge-estado.badge-estado-confirmada {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #28a745;
+}
+
+.badge-estado.badge-estado-pendiente {
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffc107;
+}
+
+.badge-estado.badge-estado-atendida {
+  background: #d1ecf1;
+  color: #0c5460;
+  border: 1px solid #17a2b8;
+}
+
+/* =========================================================
+   NOTIFICACIONES PANEL
+========================================================= */
+.panel-notificaciones {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.notificacion {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: var(--azul-claro);
+  border: 1px solid #c8e0f0;
+  font-size: 13px;
+  animation: slideIn .3s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.notif-tipo-diagnostico { background: #e8f6f0; border-color: #a8d8c0; }
+.notif-tipo-cita        { background: #eef2ff; border-color: #b0beff; }
+.notif-tipo-info        { background: #f9f9f9; border-color: #ddd; }
+
+.notif-ico   { font-size: 16px; }
+.notif-texto { flex: 1; }
+.notif-hora  { font-size: 11px; color: #888; white-space: nowrap; }
+
+.notif-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.sin-notificaciones {
+  margin: 0;
+  padding: 12px;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+.pie {
+  text-align: center;
+  padding: 18px;
+  color: #888;
+  font-size: 13px;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+@media (max-width: 640px) {
+  .encabezado {
+    flex-wrap: wrap;
+    padding: 14px 16px;
+  }
+
+  .titulo-header h1,
+  .encabezado > h1 {
+    font-size: 20px;
+  }
+
+  .header-usuario {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .filtro-citas {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filtro-citas select {
+    max-width: 100%;
+  }
+
+  .panel-modulos {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+.btn-darkmode {
+  background: transparent;
+  border: 1px solid var(--gris-borde);
+  border-radius: 10px;
+  padding: 7px 11px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background .2s;
+  line-height: 1;
+}
+.btn-darkmode:hover { background: var(--azul-claro); }
+
+body.dark-mode {
+  --azul-claro: #1a2535;
+  --blanco: #1e2d40;
+  --gris-suave: #243447;
+  --gris-borde: #2e4060;
+  color: #e0e8f0;
+}
+body.dark-mode .encabezado      { background: #152030; border-color: #2e4060; }
+body.dark-mode .tarjeta         { background: #243447; border-color: #2e4060; }
+body.dark-mode .vista           { background: #1e2d40; border-color: #2e4060; }
+body.dark-mode .cita-card,
+body.dark-mode .historial-card,
+body.dark-mode .stat-card,
+body.dark-mode .card-modulo     { background: #1a2535; border-color: #2e4060; color: #e0e8f0; }
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea         { background: #243447; color: #e0e8f0; border-color: #2e4060; }
+body.dark-mode .btn-secundario  { background: #2e4060; color: #e0e8f0; border-color: #3a5070; }
+body.dark-mode .texto-ayuda     { color: #8aabcc; }
+body.dark-mode .historial-fecha { color: #6ab0e0; }
+body.dark-mode .pie             { color: #5a7a9a; }
+
+/* =========================================================
+   MODAL DE CONFIRMACIÓN
+========================================================= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeInOverlay .2s ease;
+}
+.modal-box {
+  background: white;
+  border-radius: 18px;
+  padding: 32px 28px 24px;
+  max-width: 420px;
+  width: 90%;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.3);
+  animation: slideUpModal .22s ease;
+}
+body.dark-mode .modal-box    { background: #1e2d40; color: #e0e8f0; }
+.modal-titulo  { font-size: 18px; font-weight: 800; margin: 0 0 10px; }
+.modal-mensaje { opacity: .8; margin: 0 0 22px; line-height: 1.5; }
+.modal-acciones { display: flex; gap: 12px; justify-content: flex-end; }
+@keyframes fadeInOverlay { from { opacity:0 }   to { opacity:1 } }
+@keyframes slideUpModal  { from { transform:translateY(16px); opacity:0 } to { transform:none; opacity:1 } }
+
+/* =========================================================
+   SPINNER DE CARGA
+========================================================= */
+.spinner-wrap { text-align: center; padding: 40px 20px; }
+.spinner {
+  display: inline-block;
+  width: 38px;
+  height: 38px;
+  border: 4px solid var(--gris-borde);
+  border-top-color: var(--azul-css);
+  border-radius: 50%;
+  animation: girar .7s linear infinite;
+}
+@keyframes girar { to { transform: rotate(360deg); } }
+
+/* =========================================================
+   STATS DASHBOARD
+========================================================= */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 16px;
+  margin: 20px 0 4px;
+}
+.stat-card {
+  background: var(--blanco);
+  border: 1px solid var(--gris-borde);
+  border-radius: 14px;
+  padding: 22px 16px 18px;
+  text-align: center;
+  box-shadow: var(--sombra-suave);
+}
+.stat-ico    { font-size: 28px; display:block; margin-bottom: 8px; }
+.stat-numero { font-size: 38px; font-weight: 800; color: var(--azul-css); display: block; line-height:1; }
+.stat-label  { font-size: 13px; opacity: .7; margin-top: 6px; display: block; }
+
+/* =========================================================
+   PERFIL DE USUARIO
+========================================================= */
+.perfil-avatar {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: var(--azul-css);
+  color: white;
+  font-size: 34px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+}
+.perfil-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 20px;
+}
+@media (max-width: 640px) { .perfil-grid { grid-template-columns: 1fr; } }
+
+/* =========================================================
+   HINT PRIORIDAD
+========================================================= */
+.hint-prioridad {
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 6px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  display: inline-block;
+}
+.hint-alta   { background: #ffe0e0; color: #c0392b; }
+.hint-media  { background: #fff3cd; color: #856404; }
+.hint-baja   { background: #d4edda; color: #155724; }
+
+/* =========================================================
+   IMPRESIÓN DEL HISTORIAL
+========================================================= */
+@media print {
+  .encabezado .header-usuario,
+  .encabezado .logo-ccss,
+  .historial-filtros,
+  .acciones,
+  .btn,
+  footer,
+  .vista:not(:last-of-type) { display: none !important; }
+  body        { background: white !important; color: black !important; }
+  .historial-card { break-inside: avoid; border: 1px solid #ccc !important; margin-bottom: 14px; box-shadow: none !important; }
+  .vista      { box-shadow: none !important; border: none !important; padding: 0 !important; }
+}
