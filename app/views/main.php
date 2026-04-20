@@ -8,8 +8,8 @@ $usuario = htmlspecialchars($_SESSION['user']);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Panel Principal - Sistema de Citas Médicas</title>
-  <link rel="stylesheet" href="/public/css/style.css">
-  <script defer src="/public/js/main.js"></script>
+  <link rel="stylesheet" href="public/css/style.css">
+  <script defer src="public/js/main.js"></script>
 </head>
 
 <body>

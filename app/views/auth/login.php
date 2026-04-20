@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - Sistema de Citas Médicas</title>
-  <link rel="stylesheet" href="/public/css/style.css">
-  <script src="/public/js/usuarios.js" defer></script>
+  <link rel="stylesheet" href="public/css/style.css">
+  <script src="public/js/usuarios.js" defer></script>
 </head>
 
 <body>

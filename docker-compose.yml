@@ -1,20 +1,17 @@
 services:
-
   web:
     build: .
-    container_name: g5-app
+    container_name: sc502-app
     ports:
-      - "8080:80"
+      - "8085:80"
     volumes:
       - .:/var/www/html
     depends_on:
       - db
-    networks:
-      - g5-network
 
   db:
     image: mysql:8.0
-    container_name: g5-mysql
+    container_name: sc502-mysql
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -25,13 +22,11 @@ services:
       - ./bd.sql:/docker-entrypoint-initdb.d/01_schema.sql
       - db_data:/var/lib/mysql
     ports:
-      - "3307:3306"
-    networks:
-      - g5-network
+      - "3308:3306"
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: g5-phpmyadmin
+    container_name: sc502-phpmyadmin
     depends_on:
       - db
     environment:
@@ -39,13 +34,7 @@ services:
       PMA_USER: appuser
       PMA_PASSWORD: apppass
     ports:
-      - "8082:80"   # phpMyAdmin -> http://localhost:8082
-    networks:
-      - g5-network
+      - "8086:80"
 
 volumes:
   db_data:
-
-networks:
-  g5-network:
-    driver: bridge

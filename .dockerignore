@@ -11,8 +11,5 @@ Thumbs.db
 *.pdf
 *.docx
 
-# Guías HTML (no van al contenedor)
-guías_html_para_php/
-
 # README (no necesario en el contenedor)
 README.md

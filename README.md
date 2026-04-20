@@ -20,16 +20,16 @@ Aplicación web para la gestión inteligente de citas médicas en la CCSS, con p
 ## Requisitos
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) instalado y corriendo
-- Puerto **80** y **8080** libres en tu máquina (si están ocupados, cambialos en `docker-compose.yml`)
+- Puerto **8085** y **8086** libres en tu máquina (si están ocupados, cambialos en `docker-compose.yml`)
 
 ---
 
 ## Levantar el proyecto (primera vez)
 
-Abrí una terminal en la carpeta `G5-AmbienteWeb-SV/` y ejecutá:
+Abrí una terminal en la carpeta `SC502-vn-proyecto2026-G5-Sistema-Citas-Medicas/` y ejecutá:
 
 ```bash
-docker-compose up -d --build
+docker compose up -d --build
 ```
 
 Esto hace tres cosas automáticamente:
@@ -38,15 +38,15 @@ Esto hace tres cosas automáticamente:
 3. Levanta phpMyAdmin para administrar la base de datos visualmente
 
 La primera vez tarda ~1-2 minutos mientras descarga las imágenes.
-
+> Nota: El proyecto incluye su propio entorno Docker configurado para ejecutarse de forma independiente. No requiere configuraciones adicionales externas.
 ---
 
 ## URLs del sistema
 
 | Servicio | URL |
 |---|---|
-| **Aplicación web** | http://localhost:8080 |
-| **phpMyAdmin** | http://localhost:8082 |
+| **Aplicación web** | http://localhost:8085 |
+| **phpMyAdmin** | http://localhost:8086 |
 
 ---
 
@@ -159,7 +159,7 @@ El esquema completo está en [`bd.sql`](bd.sql). Se carga automáticamente al le
 | `g5_diagnosticos` | Diagnósticos detallados vinculados a citas |
 
 ### Ver la base de datos visualmente
-Abrí **phpMyAdmin** en http://localhost:8082 — las credenciales ya están precargadas.
+Abrí **phpMyAdmin** en http://localhost:8086 — las credenciales ya están precargadas.
 
 ---
 
