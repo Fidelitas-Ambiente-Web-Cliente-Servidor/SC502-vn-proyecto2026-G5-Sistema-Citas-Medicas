@@ -105,6 +105,13 @@ class DiagnosticoController
             return;
         }
 
+        $rol = $_SESSION['user_rol'] ?? '';
+        if (!in_array($rol, ['medico', 'admin'], true)) {
+            http_response_code(403);
+            echo json_encode(['success' => false, 'error' => 'Solo el personal médico puede registrar diagnósticos']);
+            return;
+        }
+
         $paciente    = trim($_POST['paciente']    ?? '');
         $sintomas    = trim($_POST['sintomas']    ?? '');
         $diagnostico = trim($_POST['diagnostico'] ?? '');

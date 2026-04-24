@@ -875,3 +875,221 @@ body.dark-mode .modal-box    { background: #1e2d40; color: #e0e8f0; }
   .historial-card { break-inside: avoid; border: 1px solid #ccc !important; margin-bottom: 14px; box-shadow: none !important; }
   .vista      { box-shadow: none !important; border: none !important; padding: 0 !important; }
 }
+
+/* =========================================================
+   PANEL ADMIN — ROLES Y PERMISOS
+========================================================= */
+.card-modulo-admin {
+  border: 2px solid var(--azul-css);
+  background: #eef6fc;
+  position: relative;
+}
+.card-modulo-admin::after {
+  content: 'ADMIN';
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--azul-css);
+  background: #c8e4f8;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+body.dark-mode .card-modulo-admin { background: #1c2d3f; border-color: #4a9ece; }
+body.dark-mode .card-modulo-admin::after { background: #1a3a55; color: #7ec8f0; }
+
+.roles-leyenda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+.rol-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 16px;
+  border-radius: 10px;
+  border: 1px solid;
+  font-size: 13px;
+  font-weight: 500;
+  flex: 1;
+  min-width: 180px;
+}
+.rol-item-admin    { background: #fdecea; border-color: #e57373; color: #7f1d1d; }
+.rol-item-medico   { background: #e8f5e9; border-color: #66bb6a; color: #14532d; }
+.rol-item-paciente { background: #e3f2fd; border-color: #64b5f6; color: #1e3a5f; }
+body.dark-mode .rol-item-admin    { background: #2d1010; border-color: #c62828; color: #fca5a5; }
+body.dark-mode .rol-item-medico   { background: #0d2010; border-color: #2e7d32; color: #86efac; }
+body.dark-mode .rol-item-paciente { background: #0a1a2e; border-color: #1565c0; color: #93c5fd; }
+
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .4px;
+}
+.badge-admin    { background: #fdecea; color: #b71c1c; border: 1px solid #e57373; }
+.badge-medico   { background: #e8f5e9; color: #1b5e20; border: 1px solid #66bb6a; }
+.badge-paciente { background: #e3f2fd; color: #0d47a1; border: 1px solid #64b5f6; }
+body.dark-mode .badge-admin    { background: #3b1010; color: #ef9a9a; border-color: #c62828; }
+body.dark-mode .badge-medico   { background: #0f2a12; color: #a5d6a7; border-color: #2e7d32; }
+body.dark-mode .badge-paciente { background: #0a1e2f; color: #90caf9; border-color: #1565c0; }
+
+.tabla-wrap { overflow-x: auto; }
+
+.tabla-datos {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.tabla-datos th,
+.tabla-datos td {
+  padding: 11px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--gris-borde);
+}
+.tabla-datos thead th {
+  background: var(--azul-css);
+  color: #fff;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+}
+.tabla-datos tbody tr:hover { background: var(--azul-claro); }
+body.dark-mode .tabla-datos thead th { background: var(--azul-oscuro); }
+body.dark-mode .tabla-datos tbody tr:hover { background: #1c2d3f; }
+body.dark-mode .tabla-datos td { border-color: #2a3a4a; color: #ccc; }
+
+.input-sm {
+  width: auto;
+  padding: 5px 8px;
+  border: 1px solid var(--gris-borde);
+  border-radius: 6px;
+  font-size: 13px;
+  background: #fff;
+  color: #111;
+  cursor: pointer;
+  line-height: normal;
+  height: auto;
+  margin: 0;
+}
+body.dark-mode .input-sm { background: #1e2d3d; border-color: #3a4a5a; color: #ddd; }
+
+.mensaje {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  transition: opacity .3s;
+}
+.mensaje.oculto  { display: none; }
+.mensaje-exito   { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+.mensaje-error   { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+.mensaje-info    { background: #cce5ff; color: #004085; border: 1px solid #b8daff; }
+body.dark-mode .mensaje-exito   { background: #0f2a12; color: #a5d6a7; border-color: #2e7d32; }
+body.dark-mode .mensaje-error   { background: #3b1010; color: #ef9a9a; border-color: #c62828; }
+body.dark-mode .mensaje-info    { background: #0a1e2f; color: #90caf9; border-color: #1565c0; }
+
+/* ── Fila de título + botón ── */
+.admin-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+.admin-header-row h2 { margin: 0 0 4px; }
+.admin-header-row .texto-ayuda { margin: 0; }
+
+/* ── Tabla admin (columnas fijas) ── */
+.tabla-admin { table-layout: auto; }
+.tabla-admin .col-id     { width: 44px;  text-align: center; }
+.tabla-admin .col-correo { width: 230px; }
+.tabla-admin td, .tabla-admin th { vertical-align: middle; }
+
+/* ── Select + botón inline de rol ── */
+.rol-inline {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Alta especificidad para ganarle al reset global select{width:100%;padding:12px 14px} */
+.tabla-admin td .rol-inline select,
+.tabla-admin td select.select-rol {
+  width: auto;
+  padding: 4px 8px;
+  height: 32px;
+  font-size: 13px;
+  border: 1px solid var(--gris-borde);
+  border-radius: 6px;
+  background: #fff;
+  color: #111;
+  cursor: pointer;
+  line-height: normal;
+  margin: 0;
+  appearance: auto;
+  -webkit-appearance: auto;
+}
+body.dark-mode .tabla-admin td .rol-inline select,
+body.dark-mode .tabla-admin td select.select-rol {
+  background: #1e2d3d;
+  border-color: #3a4a5a;
+  color: #ddd;
+}
+
+/* ── Botón extra pequeño ── */
+.btn-xs {
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 6px;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+/* ── Badge "Vos" ── */
+.badge-yo {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffc107;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+body.dark-mode .badge-yo { background: #2a1f00; color: #ffd54f; border-color: #f9a825; }
+
+/* ── Modal admin — grid del form ── */
+.modal-box { max-width: 520px; }
+.admin-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 16px;
+}
+.admin-col-full { grid-column: 1 / -1; }
+.campo label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #444;
+}
+body.dark-mode .campo label { color: #aac; }
+.campo .texto-ayuda { font-weight: 400; font-size: 11px; }
+.modal-box h3 { margin: 0 0 20px; font-size: 18px; }
+.modal-acciones { margin-top: 20px; display: flex; gap: 10px; justify-content: flex-end; }
+
+@media (max-width: 520px) {
+  .admin-form-grid { grid-template-columns: 1fr; }
+  .admin-col-full  { grid-column: 1; }
+  .tabla-admin .col-correo { width: auto; }
+}

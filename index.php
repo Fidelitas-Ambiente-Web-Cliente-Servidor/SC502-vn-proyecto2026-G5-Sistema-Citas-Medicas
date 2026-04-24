@@ -30,6 +30,7 @@ require './app/controllers/UserController.php';
 require './app/controllers/CitasController.php';
 require './app/controllers/DiagnosticoController.php';
 require './app/controllers/PersonalmedicoController.php';
+require './app/controllers/AdminController.php';
 
 // ── Determinar vista solicitada (por defecto: panel principal)
 $vista   = $_GET['vista'] ?? 'main';
@@ -87,6 +88,9 @@ if (isset($_GET['api'])) {
         // Lista de personal médico
         case 'personal':  $pmCtrl->apiListar();    break;
 
+        // Lista de usuarios (solo admin)
+        case 'usuarios':  (new AdminController())->apiListarUsuarios(); break;
+
         default:
             echo json_encode(['success' => false, 'error' => 'Endpoint no encontrado']);
     }
@@ -125,6 +129,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // -- Módulo de Perfil de usuario --
     if ($accion === 'actualizar_perfil') { header('Content-Type: application/json'); $usuario->actualizarPerfil(); exit; }
     if ($accion === 'cambiar_password')  { header('Content-Type: application/json'); $usuario->cambiarPassword();  exit; }
+
+    // -- Panel de administración --
+    if ($accion === 'actualizar_rol')  { header('Content-Type: application/json'); (new AdminController())->actualizarRol();  exit; }
+    if ($accion === 'crear_usuario')   { header('Content-Type: application/json'); (new AdminController())->crearUsuario();   exit; }
+    if ($accion === 'editar_usuario')  { header('Content-Type: application/json'); (new AdminController())->editarUsuario();  exit; }
 }
 
 
@@ -160,6 +169,12 @@ switch ($vista) {
         elseif  ($vista === 'diagnosticos')   require './app/views/diagnosticos/diagnosticos.php';
         elseif  ($vista === 'personalmedico') require './app/views/personalmedico/personalmedico.php';
         else                                  require './app/views/main.php';
+        break;
+
+    case 'admin_roles':
+        if (!isset($_SESSION['user'])) { header("Location: /index.php?vista=login"); exit; }
+        if (($_SESSION['user_rol'] ?? '') !== 'admin') { header("Location: /index.php?vista=main"); exit; }
+        require './app/views/admin/roles.php';
         break;
 
     // -- Ruta no encontrada --

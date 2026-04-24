@@ -330,6 +330,13 @@ class CitasController
             return;
         }
 
+        $rol = $_SESSION['user_rol'] ?? '';
+        if (!in_array($rol, ['medico', 'admin'], true)) {
+            http_response_code(403);
+            echo json_encode(['success' => false, 'error' => 'Solo el personal médico puede confirmar citas']);
+            return;
+        }
+
         $id   = (int) trim($_POST['id']   ?? 0);
         $hora = trim($_POST['hora']       ?? '');
 
@@ -376,6 +383,13 @@ class CitasController
     {
         if (!$this->user_id) {
             echo json_encode(['success' => false, 'error' => 'No autorizado']);
+            return;
+        }
+
+        $rol = $_SESSION['user_rol'] ?? '';
+        if (!in_array($rol, ['medico', 'admin'], true)) {
+            http_response_code(403);
+            echo json_encode(['success' => false, 'error' => 'Solo el personal médico puede marcar citas como atendidas']);
             return;
         }
 

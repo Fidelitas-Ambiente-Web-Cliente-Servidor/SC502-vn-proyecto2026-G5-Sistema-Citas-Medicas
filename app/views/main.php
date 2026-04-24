@@ -1,5 +1,6 @@
 <?php
-$usuario = htmlspecialchars($_SESSION['user']);
+$usuario  = htmlspecialchars($_SESSION['user']);
+$esAdmin  = ($_SESSION['user_rol'] ?? '') === 'admin';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -56,6 +57,13 @@ $usuario = htmlspecialchars($_SESSION['user']);
           <h3>Personal médico</h3>
           <p>Gestión administrativa</p>
         </a>
+
+        <?php if ($esAdmin): ?>
+        <a href="/index.php?vista=admin_roles" class="card-modulo card-modulo-admin">
+          <h3>Roles y permisos</h3>
+          <p>Administración de accesos por usuario</p>
+        </a>
+        <?php endif; ?>
 
       </div>
     </section>

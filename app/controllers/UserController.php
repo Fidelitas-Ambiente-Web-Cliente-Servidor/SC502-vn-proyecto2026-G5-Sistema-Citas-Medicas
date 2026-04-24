@@ -119,6 +119,7 @@ class UserController
             $_SESSION['user']        = $user['correo'];
             $_SESSION['user_id']     = $user['id'];
             $_SESSION['user_nombre'] = $user['nombre'];
+            $_SESSION['user_rol']    = $user['rol'];
 
             header("Location: /index.php?vista=main");
             exit;

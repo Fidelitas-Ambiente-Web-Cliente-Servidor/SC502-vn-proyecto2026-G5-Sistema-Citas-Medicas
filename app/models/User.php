@@ -98,16 +98,14 @@ class User {
      * @param string $password  Contraseña ya cifrada con password_hash()
      * @return bool true si el registro fue exitoso, false en caso de error
      */
-    public function register($nombre, $apellidos, $correo, $password) {
+    public function register($nombre, $apellidos, $correo, $password, $rol = 'paciente') {
 
-        // Los cuatro "?" se reemplazan con los valores reales de forma segura
         $stmt = $this->conn->prepare(
-            "INSERT INTO g5_users (nombre, apellidos, correo, password)
-             VALUES (?, ?, ?, ?)"
+            "INSERT INTO g5_users (nombre, apellidos, correo, password, rol)
+             VALUES (?, ?, ?, ?, ?)"
         );
 
-        // "ssss" indica que los cuatro parámetros son cadenas de texto (string)
-        $stmt->bind_param("ssss", $nombre, $apellidos, $correo, $password);
+        $stmt->bind_param("sssss", $nombre, $apellidos, $correo, $password, $rol);
 
         return $stmt->execute();
     }
@@ -191,6 +189,48 @@ class User {
         );
         // "si": primero una cadena (el hash) y luego un entero (el ID)
         $stmt->bind_param("si", $hash, $id);
+        return $stmt->execute();
+    }
+
+    /* =========================
+       ACTUALIZAR PERFIL COMPLETO (admin)
+    ========================= */
+
+    public function updatePerfilAdmin(int $id, string $nombre, string $apellidos, string $correo, string $rol): bool
+    {
+        $stmt = $this->conn->prepare(
+            "UPDATE g5_users SET nombre = ?, apellidos = ?, correo = ?, rol = ? WHERE id = ?"
+        );
+        $stmt->bind_param("ssssi", $nombre, $apellidos, $correo, $rol, $id);
+        return $stmt->execute();
+    }
+
+    /* =========================
+       LISTAR TODOS LOS USUARIOS (admin)
+    ========================= */
+
+    public function getAll(): array
+    {
+        $result = $this->conn->query(
+            "SELECT id, nombre, apellidos, correo, rol FROM g5_users ORDER BY id ASC"
+        );
+        $rows = [];
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+    }
+
+    /* =========================
+       ACTUALIZAR ROL (admin)
+    ========================= */
+
+    public function updateRol(int $id, string $rol): bool
+    {
+        $stmt = $this->conn->prepare(
+            "UPDATE g5_users SET rol = ? WHERE id = ?"
+        );
+        $stmt->bind_param("si", $rol, $id);
         return $stmt->execute();
     }
 }

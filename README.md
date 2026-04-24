@@ -135,7 +135,7 @@ SC502-vn-proyecto2026-G5-Sistema-Citas-Medicas/
 │       ├── diagnosticos.js             # Diagnósticos + historial + notificaciones (Persona 4)
 │       ├── personalmedico.js           # Agenda médica (Persona 3)
 │       └── usuarios.js                 # Validaciones cliente — login/registro (Persona 1)
-├── bd.sql                              # Esquema de base de datos + datos de prueba
+├── bd.sql/bd.sql                       # Esquema + datos de prueba
 ├── index.php                           # Front Controller — único punto de entrada
 ├── Dockerfile                          # Imagen PHP 8.2 + Apache
 ├── docker-compose.yml                  # Orquestación: app + MySQL + phpMyAdmin
